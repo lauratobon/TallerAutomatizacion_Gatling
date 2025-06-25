@@ -3,6 +3,7 @@ package Demo
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import Demo.Data._
+import Demo.LoginActions._ 
 
 class LoginTest extends Simulation{
 
@@ -13,15 +14,7 @@ class LoginTest extends Simulation{
     .check(status.is(200))
 
   // 2 Scenario Definition 
-  val scn = scenario("Login").
-    exec(http("login")
-      .post(s"users/login")
-      .body(StringBody(s"""{"email": "$email", "password": "$password"}""")).asJson
-      //Recibir información de la cuenta
-      .check(status.is(200))
-      .check(jsonPath("$.token").saveAs("authToken"))
-      
-    )
+ val scn = scenario("Login").exec(userLogin) 
 
   // 3 Load Scenario
   setUp(
