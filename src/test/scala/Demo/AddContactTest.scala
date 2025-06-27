@@ -18,7 +18,7 @@ class AddContactTest extends Simulation{
       http("Create Contact Request")
         .post("contacts")
         .header("Authorization", "Bearer ${authToken}") // Usa el authToken guardado en la sesión
-        .body(StringBody(s"""{ "firstName": "Lau", "lastName": "Tobon", "birthdate": "1970-01-01", "email": "jdoe@fake.com", "phone": "8005555555", "street1": "1 Main St.", "street2": "Apartment A", "city": "Anytown", "stateProvince": "KS", "postalCode": "12345", "country": "USA" }""")).asJson
+        .body(StringBody(s"""{ "firstName": "PruebasLau", "lastName": "Tobon", "birthdate": "1970-01-01", "email": "jdoe@fake.com", "phone": "8005555555", "street1": "1 Main St.", "street2": "Apartment A", "city": "Anytown", "stateProvince": "KS", "postalCode": "12345", "country": "USA" }""")).asJson
         .check(status.is(201)) // Espera un 201 Created para esta petición específica
     )
 
