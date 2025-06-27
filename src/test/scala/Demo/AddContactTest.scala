@@ -10,7 +10,7 @@ class AddContactTest extends Simulation{
   // 1 Http Conf
   val httpConf = http.baseUrl(url)
     .acceptHeader("application/json")
-    //.check(status.is(200)) // Chequeo general para todas las solicitudes en esta simulación
+    .check(status.is(200)) // Chequeo general para todas las solicitudes en esta simulación
 
   // 2 Scenario Definition
   val scn = scenario("Create contact").exec(userLogin) // La primera acción .exec() va aquí
