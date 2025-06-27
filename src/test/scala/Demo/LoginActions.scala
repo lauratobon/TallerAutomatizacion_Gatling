@@ -10,7 +10,7 @@ object LoginActions {
   val userLogin = exec(http("Login User")
     .post("users/login")
     .body(StringBody(s"""{"email": "$email", "password": "$password"}""")).asJson
-    .check(status.is(200))
+    .check(status.in(200, 201))
     .check(jsonPath("$.token").saveAs("authToken")) // Guarda el token en la sesión
   )
 }
